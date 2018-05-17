@@ -1,0 +1,12 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+parallel_wget.py
+setup.cfg
+setup.py
+parallel_wget.egg-info/PKG-INFO
+parallel_wget.egg-info/SOURCES.txt
+parallel_wget.egg-info/dependency_links.txt
+parallel_wget.egg-info/requires.txt
+parallel_wget.egg-info/top_level.txt
+sample/__init__.py

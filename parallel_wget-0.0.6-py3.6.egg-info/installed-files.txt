@@ -1,9 +1,0 @@
-../parallel_wget.py
-../sample/__init__.py
-../__pycache__/parallel_wget.cpython-36.pyc
-../sample/__pycache__/__init__.cpython-36.pyc
-PKG-INFO
-SOURCES.txt
-requires.txt
-top_level.txt
-dependency_links.txt

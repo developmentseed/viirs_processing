@@ -1,1 +1,1 @@
-parallel_wget>=0.0.8
+parallel_wget==0.0.8

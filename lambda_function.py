@@ -1,4 +1,5 @@
 import parallel_wget
+import tif_stats
 
 def lambda_handler(event, context):
     config = event['config']
@@ -7,4 +8,5 @@ def lambda_handler(event, context):
        path=config['collection']['provider_path'],
        files=event['input']
     )
-    return {'messsage': 'files downloaded'}
+    tif_stats.generate_stats()
+    return {'messsage': 'processing complete'}

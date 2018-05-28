@@ -1,1 +1,2 @@
 parallel_wget==0.0.8
+tif_stats==0.1

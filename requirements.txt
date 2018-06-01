@@ -1,2 +1,3 @@
 parallel_wget==0.0.8
-tif_stats
+tif_stats==0.7
+numpy>=1.14

@@ -11,3 +11,4 @@ requirements: dist requirements.txt
 
 viirs: requirements
 	cp lambda_function.py ./dist/
+	cp sez-boundaries.geojson ./dist/

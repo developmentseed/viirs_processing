@@ -6,8 +6,12 @@ import os
 
 client = boto3.client('s3')
 
+def remove_files(files=[], suffix=None):
+  if suffix is not None:
+    files.extend([os.path.join(os.getcwd(), f) for f in os.listdir('.') if os.path.isfile(f) and f.endswith(suffix)])
+  map(os.remove, files)
+
 def lambda_handler(event, context):
-    print(json.dumps(event, indent=2))
     config = event['config']
     # Return a list of files
     try:
@@ -21,14 +25,14 @@ def lambda_handler(event, context):
         # Upload to S3
         dest_bucket = config['buckets']['protected']
         file_prefix = 'sezu-stats/'
-        print('storing files')
-        print('dest_bucket: {0}'.format(dest_bucket))
         for file in  stats_files:
           res = client.put_object(
             Bucket = dest_bucket,
             Key = '{0}{1}'.format(file_prefix, file),
             Body = open(file, 'r').read())
-          print(json.dumps(res, indent=2))
+        # Remove any extra files, to save space
+        remove_files([], '.tif')
+        remove_files(stats_files, None)
     except Exception as err:
         print('caught error:')
         print(err)

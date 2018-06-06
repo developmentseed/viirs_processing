@@ -1,2 +1,2 @@
-parallel_wget==0.0.9
+parallel_wget==0.0.10
 tif_stats==0.12

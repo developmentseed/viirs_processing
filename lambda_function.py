@@ -9,7 +9,9 @@ client = boto3.client('s3')
 def remove_files(files=[], suffix=None):
   if suffix is not None:
     files.extend([os.path.join(os.getcwd(), f) for f in os.listdir('.') if os.path.isfile(f) and f.endswith(suffix)])
-  map(os.remove, files)
+  for file in files:
+    os.remove(file)
+  return None
 
 def lambda_handler(event, context):
     config = event['config']

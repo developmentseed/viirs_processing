@@ -8,7 +8,7 @@ client = boto3.client('s3')
 
 def remove_files(files=[], suffix=None, dir='.'):
   if suffix is not None:
-    files.extend([os.path.join(os.getcwd(), f) for f in os.listdir(dir) if os.path.isfile(dir + f) and f.endswith(suffix)])
+    files.extend([os.path.join(os.getcwd(), dir + f) for f in os.listdir(dir) if os.path.isfile(dir + f) and f.endswith(suffix)])
   for file in files:
     try:
       os.remove(file)

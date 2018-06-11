@@ -6,11 +6,14 @@ import os
 
 client = boto3.client('s3')
 
-def remove_files(files=[], suffix=None):
+def remove_files(files=[], suffix=None, dir='.'):
   if suffix is not None:
-    files.extend([os.path.join(os.getcwd(), f) for f in os.listdir('.') if os.path.isfile(f) and f.endswith(suffix)])
+    files.extend([os.path.join(os.getcwd(), f) for f in os.listdir(dir) if os.path.isfile(dir + f) and f.endswith(suffix)])
   for file in files:
-    os.remove(file)
+    try:
+      os.remove(file)
+    except:
+      pass
   return None
 
 def lambda_handler(event, context):
@@ -34,6 +37,7 @@ def lambda_handler(event, context):
             Body = open(file, 'r').read())
         # Remove any extra files, to save space
         remove_files([], '.tif')
+        remove_files([], '.tif', './outputs/')
         remove_files(stats_files, None)
     except Exception as err:
         print('caught error:')

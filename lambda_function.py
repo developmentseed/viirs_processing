@@ -28,7 +28,7 @@ def lambda_handler(event, context):
         # Return csv file names
         stats_files = tif_stats.generate_stats()
         # Upload to S3
-        dest_bucket = config['buckets']['protected']
+        dest_bucket = config['buckets']['protected']['name']
         file_prefix = 'sezu-stats/'
         for file in  stats_files:
           res = client.put_object(
